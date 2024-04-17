@@ -1,0 +1,21 @@
+The Book Management System
+
+Its a web application using Express.js and SQLite, use to collect and desgin of books.One can add new book, delete the book and manupulate the book manupulate like changeing books name, image.
+
+Feature 
+
+1)Insert the new book with the image
+2)delete the existing book
+3)Making changes for over the book
+4)Shows rhe list of books
+
+Envirment Use
+Node.js and SoLite
+
+How to use
+
+1)First step is to make the node modules by (npm i)
+2)than by ccessing the application in web browser via navigating to localhost:3000. command use (node app.js)
+3)You can fill the fields in starting add the image to add the book
+4)click on edit to make changes on the book like chnge authers name ,book cover like that
+5)to delete the book click on the delete button the book entery

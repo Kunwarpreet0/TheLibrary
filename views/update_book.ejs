@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Book</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0dddd;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #e0dddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #e0dddd;
+            color: #000000;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .btn-primary {
+            background-color: #6ca4e1;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #6ca4e1;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            const image = document.getElementById('image').files[0];
+            const bookName = document.getElementById('book_name').value;
+            const author = document.getElementById('author').value;
+
+            if (!image) {
+                alert('Please select an Image.');
+                return false;
+            }
+            if (bookName.trim() === '') {
+                alert('Please enter the Book Name.');
+                return false;
+            }
+            if (author.trim() === '') {
+                alert('Please enter the Author Name.');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="mb-0">Edit Book</h2>
+            </div>
+            <div class="card-body">
+                <form action="/update/<%= book.id %>" method="post" enctype="multipart/form-data"
+                    onsubmit="return validateForm()">
+                    <input type="hidden" name="current_image" value="<%= book.image %>">
+                    <div class="form-group">
+                        <label for="image">Image:</label>
+                        <input type="file" class="form-control-file" id="image" name="image" accept="image/*" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="book_name">Book Name:</label>
+                        <input type="text" class="form-control" id="book_name" name="book_name"
+                            value="<%= book.book_name %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="author">Author:</label>
+                        <input type="text" class="form-control" id="author" name="author"
+                            value="<%= book.author %>" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update Book</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
